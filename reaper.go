@@ -406,6 +406,10 @@ func (r *reaperSpawner) newReaper(ctx context.Context, sessionID string, provide
 	req.Labels[core.LabelReaper] = "true"
 	req.Labels[core.LabelRyuk] = "true"
 	delete(req.Labels, core.LabelReap)
+	req.LogConsumerCfg = &LogConsumerConfig{
+		Opts:      []LogProductionOption{WithLogProductionTimeout(10 * time.Second)},
+		Consumers: []LogConsumer{&StdoutLogConsumer{}},
+	}
 
 	// Attach reaper container to a requested network if it is specified
 	if p, ok := provider.(*DockerProvider); ok {
