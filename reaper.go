@@ -421,6 +421,8 @@ func (r *reaperSpawner) newReaper(ctx context.Context, sessionID string, provide
 		req.Networks = append(req.Networks, defaultNetwork)
 	}
 
+	fmt.Printf("RYUK CONTAINER REQ %+v\n", req)
+
 	c, err := provider.RunContainer(ctx, req)
 	// defer func() {
 	// 	if err != nil {
@@ -428,7 +430,7 @@ func (r *reaperSpawner) newReaper(ctx context.Context, sessionID string, provide
 	// 	}
 	// }()
 	if err != nil {
-		fmt.Printf("ryuk RunContainer error: c=%v err=%v req=%+v\n", c, err, req)
+		fmt.Printf("ryuk RunContainer error: c=%v err=%v\n", c, err)
 		return nil, fmt.Errorf("run container: %w", err)
 	}
 
