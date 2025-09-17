@@ -421,7 +421,7 @@ func (r *reaperSpawner) newReaper(ctx context.Context, sessionID string, provide
 		req.Networks = append(req.Networks, defaultNetwork)
 	}
 
-	fmt.Printf("RYUK CONTAINER REQ %+v\n", req)
+	fmt.Printf("RYUK CONTAINER dockerHostMount=%+v REQ %+v\n", dockerHostMount, req)
 
 	c, err := provider.RunContainer(ctx, req)
 	// defer func() {
