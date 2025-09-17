@@ -418,11 +418,11 @@ func (r *reaperSpawner) newReaper(ctx context.Context, sessionID string, provide
 	}
 
 	c, err := provider.RunContainer(ctx, req)
-	defer func() {
-		if err != nil {
-			err = errors.Join(err, TerminateContainer(c))
-		}
-	}()
+	// defer func() {
+	// 	if err != nil {
+	// 		err = errors.Join(err, TerminateContainer(c))
+	// 	}
+	// }()
 	if err != nil {
 		return nil, fmt.Errorf("run container: %w", err)
 	}
