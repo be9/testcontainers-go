@@ -424,6 +424,7 @@ func (r *reaperSpawner) newReaper(ctx context.Context, sessionID string, provide
 	// 	}
 	// }()
 	if err != nil {
+		fmt.Printf("ryuk RunContainer error: c=%v err=%v\n", c, err)
 		return nil, fmt.Errorf("run container: %w", err)
 	}
 
